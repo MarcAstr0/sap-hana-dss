@@ -1,29 +1,41 @@
 'use strict';
-var dataProvider = require('../data/query.js');
+
+const dataProvider = require('../data/query.js');
 /**
  * Operations on /query
  */
 module.exports = {
+  /**
+   * summary:
+   * description: Executes a SQL query on the database.
+   * parameters: request
+   * produces:
+   * responses: 200, default
+   */
+  post: function executeQuery(req, res, next) {
     /**
-     * summary: 
-     * description: Executes a SQL query on the database.
-     * parameters: request
-     * produces: 
-     * responses: 200, default
+     * Get the data for response 200
+     * For response `default` status 200 is used.
      */
-    post: function (req, res, next) {
-        /**
-         * Get the data for response 200
-         * For response `default` status 200 is used.
-         */
-        var status = 200;
-        var provider = dataProvider['post']['200'];
-        provider(req, res, function (err, data) {
-            if (err) {
-                next(err);
-                return;
-            }
-            res.status(status).send(data && data.responses);
+    let status = 200;
+    let provider = dataProvider.post['200'];
+    provider(req, res, (err, data) => {
+      if (err) {
+        res.status(500).send(err);
+        return;
+      }
+      if (!data) {
+        status = 204;
+        provider = dataProvider.post[204];
+        provider(req, res, (err, data) => {
+          if (err) {
+            res.status(500).send(err);
+          }
+          res.status(status).send(data);
         });
-    }
+        return;
+      }
+      res.status(status).send(data);
+    });
+  }
 };

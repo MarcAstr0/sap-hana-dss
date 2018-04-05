@@ -1,41 +1,46 @@
 {
-    "name": "sap-hana-dss",
-    "description": "",
-    "version": "0.0.1",
-    "author": "Mario Castro Squella <yo@marcastr0.com>",
-    "contributors": [],
-    "repository": {
-        "type": "git",
-        "url": "git://github.com/MarcAstr0/sap-hana-dss.git"
-    },
-    "bugs": "http://github.com/MarcAstr0/sap-hana-dss/issues",
-    "publishConfig": {
-        "registry": "https://registry.npmjs.org"
-    },
-    "dependencies": {
-        "body-parser": "^1.15.0",
-        "express": "^4.0.0",
-        "swaggerize-express": "^4.0.0",
-        "swaggerize-ui": "^1.0.1",
-        "swagmock": "~0.0.2"
-    },
-    "devDependencies": {
-        "eslint": "^2",
-        "tape": "^4",
-        "istanbul": "~0.4.3",
-        "is-my-json-valid": "^2.13.1",
-        "js-yaml": "^3.2.6",
-        "supertest": "^1.2.0",
-        "swagger-parser": "^3.4.1"
-    },
-    "scripts": {
-        "test": "tape 'tests/**/*.js'",
-        "cover": "istanbul cover tape -- 'tests/**/*.js'",
-        "lint": "eslint .",
-        "regenerate": "yo swaggerize:test --framework express --apiPath './config/swagger.json'"
-    },
-    "generator-swaggerize": {
-        "version": "4.0.0"
-    },
-    "main": "./server"
+  "name": "sap-hana-dss",
+  "description": "",
+  "version": "0.0.1",
+  "author": "Mario Castro Squella <yo@marcastr0.com>",
+  "contributors": [],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/MarcAstr0/sap-hana-dss.git"
+  },
+  "license": "MIT",
+  "bugs": "http://github.com/MarcAstr0/sap-hana-dss/issues",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org"
+  },
+  "dependencies": {
+    "body-parser": "^1.15.0",
+    "express": "^4.0.0",
+    "node-hdb-pool": "git+https://git@github.com/MarcAstr0/node-hdb-pool.git#multitenant",
+    "swaggerize-express": "^4.0.0",
+    "swaggerize-ui": "^1.0.1",
+    "swagmock": "~0.0.2"
+  },
+  "devDependencies": {
+    "eslint": "^4.18.2",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.10.0",
+    "is-my-json-valid": "^2.13.1",
+    "istanbul": "~0.4.3",
+    "js-yaml": "^3.2.6",
+    "supertest": "^1.2.0",
+    "swagger-parser": "^3.4.1",
+    "tape": "^4",
+    "tracer": "^0.8.12"
+  },
+  "scripts": {
+    "test": "tape 'tests/**/*.js'",
+    "cover": "istanbul cover tape -- 'tests/**/*.js'",
+    "lint": "eslint .",
+    "regenerate": "yo swaggerize:test --framework express --apiPath './config/swagger.json'"
+  },
+  "generator-swaggerize": {
+    "version": "4.0.0"
+  },
+  "main": "./server"
 }

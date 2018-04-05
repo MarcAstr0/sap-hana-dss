@@ -18,6 +18,7 @@
   "paths": {
     "/query": {
       "post": {
+        "operationId": "executeQuery",
         "description": "Executes a SQL query on the database",
         "parameters": [
           {
