@@ -1,21 +1,22 @@
 {
-    "name": "saphanadss",
+    "name": "sap-hana-dss",
     "description": "",
-    "version": "1.0.0",
+    "version": "0.0.1",
     "author": "Mario Castro Squella <yo@marcastr0.com>",
     "contributors": [],
     "repository": {
         "type": "git",
-        "url": "git://github.com/MarcAstr0/saphanadss.git"
+        "url": "git://github.com/MarcAstr0/sap-hana-dss.git"
     },
-    "bugs": "http://github.com/MarcAstr0/saphanadss/issues",
+    "bugs": "http://github.com/MarcAstr0/sap-hana-dss/issues",
     "publishConfig": {
         "registry": "https://registry.npmjs.org"
     },
     "dependencies": {
-        "express": "^4.0.0",
         "body-parser": "^1.15.0",
+        "express": "^4.0.0",
         "swaggerize-express": "^4.0.0",
+        "swaggerize-ui": "^1.0.1",
         "swagmock": "~0.0.2"
     },
     "devDependencies": {

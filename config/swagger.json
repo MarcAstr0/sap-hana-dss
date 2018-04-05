@@ -1,120 +1,133 @@
 {
-    "swagger": "2.0",
-    "info": {
-        "version": "0.0.1",
-        "title": "SAP HANA DSS",
-        "description": "Data Services Server for connecting to a SAP HANA database and running queries."
-    },
-    "schemes": [
-        "http",
-        "https"
-    ],
-    "consumes": [
-        "application/json"
-    ],
-    "produces": [
-        "application/json"
-    ],
-    "paths": {
-        "/query": {
-            "post": {
-                "description": "Executes a SQL query on the database.",
-                "parameters": [
-                    {
-                        "name": "request",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/Request"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Success",
-                        "schema": {
-                            "$ref": "#/definitions/SuccessResponse"
-                        }
-                    },
-                    "default": {
-                        "description": "Error",
-                        "schema": {
-                            "$ref": "#/definitions/ErrorResponse"
-                        }
-                    }
-                }
+  "swagger": "2.0",
+  "info": {
+    "version": "0.0.1",
+    "title": "SAP HANA DSS",
+    "description": "Data Services Server for connecting to a SAP HANA database and running queries"
+  },
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/query": {
+      "post": {
+        "description": "Executes a SQL query on the database",
+        "parameters": [
+          {
+            "name": "request",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Request"
             }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/SuccessResponse"
+            }
+          },
+          "default": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
         }
-    },
-    "definitions": {
-        "SuccessResponse": {
-            "type": "object",
-            "required": [
-                "result"
-            ],
-            "properties": {
-                "result": {
-                    "type": "array"
-                }
-            }
-        },
-        "ErrorResponse": {
-            "type": "object",
-            "required": [
-                "message"
-            ],
-            "properties": {
-                "code": {
-                    "type": "string"
-                },
-                "message": {
-                    "type": "string"
-                }
-            }
-        },
-        "Request": {
-            "type": "object",
-            "properties": {
-                "database_parameters": {
-                    "description": "The database connection parameters.",
-                    "$ref": "#/definitions/DatabaseParameters"
-                },
-                "query": {
-                    "type": "string",
-                    "description": "The SQL query to execute.",
-                    "example": "SELECT * FROM MYSCHEMA.USERS;"
-                }
-            }
-        },
-        "DatabaseParameters": {
-            "type": "object",
-            "properties": {
-                "db_host": {
-                    "type": "string",
-                    "description": "The database hostname or IP address.",
-                    "example": "localhost"
-                },
-                "db_port": {
-                    "type": "number",
-                    "description": "The database port number.",
-                    "example": 30015
-                },
-                "db_user": {
-                    "type": "string",
-                    "description": "The database user.",
-                    "example": "user"
-                },
-                "db_password": {
-                    "type": "string",
-                    "description": "Password for the database user.",
-                    "example": "password"
-                },
-                "db_name": {
-                    "type": "string",
-                    "description": "The database name, required for multitenant systems.",
-                    "example": "DB"
-                }
-            }
-        }
+      }
     }
+  },
+  "definitions": {
+    "SuccessResponse": {
+      "type": "object",
+      "required": [
+        "result"
+      ],
+      "properties": {
+        "result": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        }
+      }
+    },
+    "ErrorResponse": {
+      "type": "object",
+      "required": [
+        "message"
+      ],
+      "properties": {
+        "code": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        }
+      }
+    },
+    "Request": {
+      "type": "object",
+      "required": [
+        "database_parameters",
+        "query"
+      ],
+      "properties": {
+        "database_parameters": {
+          "description": "The database connection parameters",
+          "$ref": "#/definitions/DatabaseParameters"
+        },
+        "query": {
+          "type": "string",
+          "description": "The SQL query to execute",
+          "example": "SELECT * FROM MYSCHEMA.USERS;"
+        }
+      }
+    },
+    "DatabaseParameters": {
+      "type": "object",
+      "required": [
+        "db_host",
+        "db_port",
+        "db_user",
+        "db_password"
+      ],
+      "properties": {
+        "db_host": {
+          "type": "string",
+          "description": "The database hostname or IP address",
+          "example": "localhost"
+        },
+        "db_port": {
+          "type": "number",
+          "description": "The database port number",
+          "example": 30015
+        },
+        "db_user": {
+          "type": "string",
+          "description": "The database user",
+          "example": "USER"
+        },
+        "db_password": {
+          "type": "string",
+          "description": "Password for the database user",
+          "example": "password"
+        },
+        "db_name": {
+          "type": "string",
+          "description": "The database name, required for multitenant systems",
+          "example": "MYDB"
+        }
+      }
+    }
+  }
 }
