@@ -1,0 +1,16 @@
+{
+  "rules": {
+    "no-param-reassign": [
+      2,
+      {
+        "props": false
+      }
+    ],
+    "no-console": 0
+  },
+  "extends": "airbnb-base/legacy",
+  "env": {
+    "es6": true,
+    "node": true
+  }
+}
