@@ -19,7 +19,8 @@
     "node-hdb-pool": "git+https://git@github.com/MarcAstr0/node-hdb-pool.git#multitenant",
     "swaggerize-express": "^4.0.0",
     "swaggerize-ui": "^1.0.1",
-    "swagmock": "~0.0.2"
+    "swagmock": "~0.0.2",
+    "tracer": "^0.8.12"
   },
   "devDependencies": {
     "eslint": "^4.18.2",
