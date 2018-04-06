@@ -29,7 +29,7 @@ App.use('/docs', SwaggerUi({
   docs: '/api-docs'
 }));
 
-Server.listen(8000, function () {
+Server.listen(process.env.PORT, function () {
   App.swagger.api.host = this.address().address + ':' + this.address().port;
   /* eslint-disable no-console */
   console.log('App running on %s:%d', this.address().address, this.address().port);
